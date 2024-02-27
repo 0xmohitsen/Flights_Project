@@ -1,5 +1,4 @@
 const { Logger } = require('../config');
-const logger = require('../config/logger-config');
 
 class CrudRepository{
     constructor(model){
@@ -61,4 +60,4 @@ class CrudRepository{
     }
 }
 
-module.export = CrudRepository;
+module.exports = CrudRepository;
