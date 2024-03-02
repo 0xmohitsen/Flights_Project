@@ -34,9 +34,9 @@ async function destroyCity(data){
     }
 }
 
-async function updateCity(data, id){
+async function updateCity(id, data){
     try {
-        const response = await cityRepository.update(data, id);
+        const response = await cityRepository.update(id, data);
         return response;
     } catch (error) {
         if(error.statusCode == StatusCodes.NOT_FOUND){

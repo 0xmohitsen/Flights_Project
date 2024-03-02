@@ -2,6 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const { Logger } = require('../config');
 const AppError = require('../utils/errors/app-error');
 
+
 class CrudRepository{
     constructor(model){
         this.model = model;
@@ -48,7 +49,7 @@ class CrudRepository{
 
             console.log(response);
 
-            if(response[0] === 0){
+            if(!response[0]){
                 throw new AppError('Not able to find the resource', StatusCodes.NOT_FOUND);
             }
             return response;

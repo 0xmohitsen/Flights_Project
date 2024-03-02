@@ -47,9 +47,9 @@ async function destroyCity(req, res){
 
 async function updateCity(req, res){
     try {
-        const city = await CityService.updateCity({
+        const city = await CityService.updateCity(req.params.id , {
             name: req.body.name
-        }, req.params.id);
+        });
 
         SuccessResponse.data = city;
 
