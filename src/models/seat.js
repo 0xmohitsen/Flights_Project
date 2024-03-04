@@ -31,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     type: {
       type: DataTypes.ENUM,
-      values: [BUSINESS, ECONOMY, PREMIUM_ECONOMY, FIRST_CLASS],
-      defaultValue: ECONOMY,
+      values: ['BUSINESS', 'ECONOMY', 'PREMIUM_ECONOMY', 'FIRST_CLASS'],
+      defaultValue: 'ECONOMY',
       allowNull: false
     }
   }, {
