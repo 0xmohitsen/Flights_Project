@@ -2,6 +2,9 @@
 const {
   Model
 } = require('sequelize');
+
+const { Enums } = require('../utils/common');
+const { BUSINESS, PREMIUM_ECONOMY, FIRST_CLASS, ECONOMY } = Enums.SEAT_TYPE;
 module.exports = (sequelize, DataTypes) => {
   class Seat extends Model {
     /**
@@ -31,8 +34,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     type: {
       type: DataTypes.ENUM,
-      values: ['BUSINESS', 'ECONOMY', 'PREMIUM_ECONOMY', 'FIRST_CLASS'],
-      defaultValue: 'ECONOMY',
+      values: [BUSINESS, PREMIUM_ECONOMY, FIRST_CLASS, ECONOMY],
+      defaultValue: ECONOMY,
       allowNull: false
     }
   }, {
