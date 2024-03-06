@@ -17,7 +17,7 @@ async function createFlight(data){
             });
             throw new AppError(explanation, StatusCodes.BAD_REQUEST);
         }
-        throw new AppError('Cannot create a new Airport Object', StatusCodes.INTERNAL_SERVER_ERROR);
+        throw new AppError('Cannot create a new Flight Object', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
