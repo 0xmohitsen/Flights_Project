@@ -29,12 +29,15 @@ async function getAllFlights(query){
         //prices = 5000-10000
         const customFilter = {};
         const endingTripTime = " 23:59:00";
+        // let airportInfo = {};
         let sortFilter = [];
         
         if(query.trips){
             [departureAirportId, arrivalAirportId] = query.trips.split("-");
             customFilter.departureAirportId = departureAirportId;
             customFilter.arrivalAirportId = arrivalAirportId;
+            // airportInfo.arrivalAirportId = arrivalAirportId;
+            // airportInfo.departureAirportId = departureAirportId;
         }
 
         if(query.prices){
