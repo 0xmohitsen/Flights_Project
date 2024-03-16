@@ -93,9 +93,21 @@ async function updateSeats(data){
     }
 }
 
+async function deleteFlight(id){
+    try {
+        const response = await flightRepository.destroy(id);
+        return response;
+    } catch (error) {
+        if(error instanceof AppError) throw error;
+
+        throw new AppError('Something went wrong while destroying the flight', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 module.exports = {
     createFlight,
     getAllFlights,
     getFlight,
-    updateSeats
+    updateSeats,
+    deleteFlight
 }

@@ -103,9 +103,28 @@ async function updateSeats(req, res){
                 .json(ErrorResponse);
     }
 }
+
+async function deleteFlight(req, res){
+    try {
+        const flight = await FlightService.deleteFlight(req.params.id);
+        
+        SuccessResponse.data = flight;
+
+        return res
+                .status(StatusCodes.OK)
+                .json(SuccessResponse);
+    } catch (error) {
+        ErrorResponse.error = error;
+
+        return res
+                .status(error.statusCode)
+                .json(ErrorResponse);
+    }
+}
 module.exports = {
     createFlight,
     getAllFlights,
     getFlight,
-    updateSeats
+    updateSeats,
+    deleteFlight
 }
