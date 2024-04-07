@@ -1,48 +1,54 @@
-This is a base node js project template, which anyone can use as it has been prepared, by keeping some of the most important code principles and project management recommendations. Feel free to change anything. 
+# GetSetFly - Microservices-based Flight Booking System
 
+GetSetFly is a backend project developed for managing flight bookings and notifications using a microservices architecture. It consists of several services built with Node.js, Express.js, and MySQL's Sequelize ORM. The project follows best practices for backend development, including role-based authorization, rate-limiting, and message queuing for efficient communication between services.
 
-`src` -> Inside the src folder all the actual source code regarding the project will reside, this will not include any kind of tests. (You might want to make separate tests folder)
+## Services
 
-Lets take a look inside the `src` folder
+### 1. [API Gateway](https://github.com/Mohitsen11/API_Gateway_For_Flights)
 
- - `config` -> In this folder anything and everything regarding any configurations or setup of a library or module will be done. For example: setting up `dotenv` so that we can use the environment variables anywhere in a cleaner fashion, this is done in the `server-config.js`. One more example can be to setup you logging library that can help you to prepare meaningful logs, so configuration for this library should also be done here. 
+- Entry point for accessing all other services
+- Implements authentication and role-based authorization
+- Uses Proxy for redirecting requests/API calls to the appropriate service
+- Implements rate-limiting to prevent server overload
 
- - `routes` -> In the routes folder, we register a route and the corresponding middleware and controllers to it. 
+### 2. [Flight Service](https://github.com/Mohitsen11/Flights_Project)
 
- - `middlewares` -> they are just going to intercept the incoming requests where we can write our validators, authenticators etc. 
+- Provides information about flights, airplanes, cities, and airports
+- Supports CRUD operations for flights
+- Implements associations for tables related to flights, airplanes, cities, and airports
+- Allows users to filter flights based on various criteria including price, available seats, departure and arrival airports.
+- Leverages the power of SQL queries to efficiently filter flight data based on the provided criteria. It utilizes Sequelize ORM's query-building capabilities to construct dynamic queries and retrieve relevant 
+  flight information from the database. 
 
- - `controllers` -> they are kind of the last middlewares as post them you call you business layer to execute the budiness logic. In controllers we just receive the incoming requests and data and then pass it to the business layer, and once business layer returns an output, we structure the API response in controllers and send the output. 
+### 3. [Flight Booking Service](https://github.com/Mohitsen11/Flights_Booking_Service)
 
- - `repositories` -> this folder contains all the logic using which we interact the DB by writing queries, all the raw queries or ORM queries will go here.
+- Allows authenticated users, admins, and flight companies to book tickets
+- Publishes events to the Message Queue after successful booking
+- Prevents multiple payments from the same user using transactional queries and RabbitMQ's Pub/Sub architecture
 
- - `services` -> contains the buiness logic and interacts with repositories for data from the database
+### 4. [Flight Notification Service](https://github.com/Mohitsen11/flight_Notification_Service)
 
- - `utils` -> contains helper methods, error classes etc.
+- Sends email notifications to customers after successful ticket bookings
+- Acts as a Subscriber to the events published by the Booking Service via message queues
 
-### Setup the project
+## Features
 
- - Download this template from github and open it in your favourite text editor. 
- - Go inside the folder path and execute the following command:
-  ```
-  npm install
-  ```
- - In the root directory create a `.env` file and add the following env variables
-    ```
-        PORT=<port number of your choice>
-    ```
-    ex: 
-    ```
-        PORT=3000
-    ```
- - go inside the `src` folder and execute the following command:
-    ```
-      npx sequelize init
-    ```
- - By executing the above command you will get migrations and seeders folder along with a config.json inside the config folder. 
- - If you're setting up your development environment, then write the username of your db, password of your db and in dialect mention whatever db you are using for ex: mysql, mariadb etc
- - If you're setting up test or prod environment, make sure you also replace the host with the hosted db url.
+- **Microservices Architecture**: Scalable and maintainable architecture with separate services for different functionalities.
+- **Authentication and Authorization**: Role-based access control for securing resources.
+- **Rate Limiting**: Prevents server overload by restricting the number of requests per IP address.
+- **Message Queues**: Efficient communication between services using RabbitMQ's Pub/Sub architecture.
+- **Transactional Queries**: Prevents concurrency issues during ticket booking by using transactional queries provided by MySQL.
+- **Association**: Utilizes associations in the database schema to represent relationships between entities.
 
- - To run the server execute
- ```
- npm run dev
- ```
+## Getting Started
+
+To run the project locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/Mohitsen11/API_Gateway_For_Flights.git`
+2. Install dependencies: `npm install`
+3. Configure environment variables
+4. Start each service: `npm start`
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
