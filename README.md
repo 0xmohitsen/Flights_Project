@@ -44,10 +44,10 @@ GetSetFly is a backend project developed for managing flight bookings and notifi
 
 To run the project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/Mohitsen11/API_Gateway_For_Flights.git`
+1. Clone the repository: `git clone https://github.com/Mohitsen11/Flights_Project.git`
 2. Install dependencies: `npm install`
 3. Configure environment variables
-4. Start each service: `npm start`
+4. Start each service: `npm run dev`
 
 ## Contributing
 
