@@ -17,8 +17,8 @@ GetSetFly is a backend project developed for managing flight bookings and notifi
 - Supports CRUD operations for flights
 - Implements associations for tables related to flights, airplanes, cities, and airports
 - Allows users to filter flights based on various criteria including price, available seats, departure and arrival airports.
-- Leverages the power of SQL queries to efficiently filter flight data based on the provided criteria. It utilizes Sequelize ORM's query-building capabilities to construct dynamic queries and retrieve relevant 
-  flight information from the database. 
+- Leverages the power of SQL queries to efficiently filter flight data based on the provided criteria. It utilizes Sequelize ORM's query-building capabilities to construct dynamic queries and retrieve relevant
+  flight information from the database.
 
 ### 3. [Flight Booking Service](https://github.com/Mohitsen11/Flights_Booking_Service)
 

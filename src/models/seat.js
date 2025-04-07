@@ -14,27 +14,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Airplane,{
-        foreignKey: 'airplaneId'
-      })
+      this.belongsTo(models.Airplane, {
+        foreignKey: 'airplaneId',
+      });
     }
   }
   Seat.init({
     airplaneId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     row: {
       type: DataTypes.INTEGER,
-      allowNull:false
+      allowNull: false,
     },
     col: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     type: {
       type: DataTypes.ENUM,
-      values: [BUSINESS, PREMIUM_ECONOMY, FIRST_CLASS, ECONOMY],
+      values: [BUSINESS, ECONOMY, PREMIUM_ECONOMY, FIRST_CLASS],
       defaultValue: ECONOMY,
       allowNull: false
     }
